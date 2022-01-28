@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Grid, Typography, Box } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
+import Balanceof from './ImportMenu/BalanceOf';
 
 const ERC20Token = require("./ERC20Token");
 const { web3, applyDecimals } = require("../../utils/ethereumAPI");
 
 const ERE20Import = ({ tokenAddress }) => {
-  // const web3Token = new web3.eth.Contract(ERC20Token.abi, tokenAddress);
+  const web3Token = new web3.eth.Contract(ERC20Token.abi, tokenAddress);
   // const [tokenRefresh, setTokenRefresh] = useState(0);
 
   const [tokenData, setTokenData] = useState([
@@ -59,6 +60,9 @@ const ERE20Import = ({ tokenAddress }) => {
           <DataGrid rows={tokenData} columns={columns} />
         </Grid>
       </Grid>
+      <Box border={1} sx={{ mt: 2, borderRadius: 1, borderColor: "LightGray" }}>
+        <Balanceof web3Token={web3Token} tokenData={tokenData} />
+      </Box>
     </div>
   );
 }
