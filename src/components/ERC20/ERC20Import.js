@@ -9,7 +9,7 @@ const { web3, applyDecimals } = require("../../utils/ethereumAPI");
 
 const ERE20Import = ({ tokenAddress }) => {
   const web3Token = new web3.eth.Contract(ERC20Token.abi, tokenAddress);
-  // const [tokenRefresh, setTokenRefresh] = useState(0);
+  const [tokenRefresh, setTokenRefresh] = useState(0);
 
   const [tokenData, setTokenData] = useState([
     { id: 0, name: 'Address', value: tokenAddress },
@@ -47,7 +47,9 @@ const ERE20Import = ({ tokenAddress }) => {
     }
 
     fetchData();
-  }, [tokenAddress]);
+  }, [tokenAddress, tokenRefresh]);
+
+  const refreshDataGrid = () => setTokenRefresh(t => ++t);
 
   return (
     <div>
@@ -65,7 +67,7 @@ const ERE20Import = ({ tokenAddress }) => {
         <Balanceof web3Token={web3Token} tokenData={tokenData} />
       </Box>
       <Box border={1} sx={{ mt: 2, borderRadius: 1, borderColor: "LightGray" }}>
-        <Transfer web3Token={web3Token} tokenData={tokenData}/>
+        <Transfer web3Token={web3Token} tokenData={tokenData} refreshDataGrid={refreshDataGrid}/>
       </Box>
     </div>
   );

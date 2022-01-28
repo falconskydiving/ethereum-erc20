@@ -3,7 +3,7 @@ import { Grid, TextField, Button, Alert, CircularProgress } from '@mui/material'
 
 const { web3, applyDecimals } = require('../../../utils/ethereumAPI');
 
-const Transfer = ({ web3Token, tokenData }) => {
+const Transfer = ({ web3Token, tokenData, refreshDataGrid }) => {
   const symbol = tokenData.find(x => x.name === "Symbol").value;
   const decimals = tokenData.find(x => x.name === "Decimals").value;
 
@@ -20,7 +20,7 @@ const Transfer = ({ web3Token, tokenData }) => {
       await web3Token.methods.transfer(data.arg1, amountToSend)
                               .send({ from: accounts[0] });
       successMessage = `Transfer successful. ${data.arg2} ${symbol} sent`;
-      // refreshDataGrid();
+      refreshDataGrid();
     } catch (error) {
       errorMessage = error.message;
     }
