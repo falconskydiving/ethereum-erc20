@@ -1,6 +1,7 @@
 import React from 'react';
 import { CssBaseline, AppBar, Toolbar, Typography, Drawer, Divider, List, ListItemButton, ListItemText } from '@mui/material';
 import { Box } from '@mui/system';
+import ERC20App from './ERC20/ERC20App';
 
 const Appauthenticated = () => {
   const drawerWidth = 240;
@@ -40,7 +41,7 @@ const Appauthenticated = () => {
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p:3 }}>
             <Toolbar />
-            <h1>Content</h1>
+            <ERC20App />
         
       </Box>
     </Box>
