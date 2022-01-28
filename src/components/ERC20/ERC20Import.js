@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Grid, Typography, Box } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import Balanceof from './ImportMenu/BalanceOf';
+import Transfer from './ImportMenu/Transfer';
 
 const ERC20Token = require("./ERC20Token");
 const { web3, applyDecimals } = require("../../utils/ethereumAPI");
@@ -62,6 +63,9 @@ const ERE20Import = ({ tokenAddress }) => {
       </Grid>
       <Box border={1} sx={{ mt: 2, borderRadius: 1, borderColor: "LightGray" }}>
         <Balanceof web3Token={web3Token} tokenData={tokenData} />
+      </Box>
+      <Box border={1} sx={{ mt: 2, borderRadius: 1, borderColor: "LightGray" }}>
+        <Transfer web3Token={web3Token} tokenData={tokenData}/>
       </Box>
     </div>
   );

@@ -4,7 +4,6 @@ import ERC20Create from './ERC20Create'
 import ERC20MainMenu from './ERC20MainMenu'
 import ERC20Import from './ERC20Import'
 
-
 const Menu = {
   Main: 0,
   Create: 1,
